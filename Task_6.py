@@ -6,14 +6,25 @@
 leftSum = 0
 rightSum = 0
 i = 6
-n = int(input("Введите шестизначный номер билета: "))
-while i > 0:
-    if (i > 3):
-        rightSum = rightSum + n % 10
-    if (i <= 3):
-        leftSum = leftSum + n % 10
-    n //= 10
-    i-=1
+
+while True:
+    try:
+        n = int(input("Введите шестизначный номер билета: "))
+    except:
+        print("Введено не число!") 
+    else:
+        if (n > 99999 and n < 1000000):
+            while i > 0:
+                if (i > 3):
+                    rightSum = rightSum + n % 10
+                if (i <= 3):
+                    leftSum = leftSum + n % 10
+                n //= 10
+                i-=1
+            break
+        else:
+            print("Введено не шестизначное число!")
+		    
 if (leftSum == rightSum):
     print("Билет счастливый!")
 else:
